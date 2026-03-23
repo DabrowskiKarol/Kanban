@@ -9,6 +9,14 @@ export const COLUMN_TONES = [
   'bg-[#f9f5ff]/82',
   'bg-[#eef8fd]/86',
   'bg-[#fffaf0]/88',
+  'bg-[#efe0ff]/92',
+  'bg-[#dff3ff]/94',
+  'bg-[#ffe7bf]/94',
+  'bg-[#ffdce8]/94',
+  'bg-[#dff6eb]/94',
+  'bg-[#ffe1f7]/94',
+  'bg-[#e5e4ff]/94',
+  'bg-[#ffe0d6]/94',
 ] as const
 
 export const DEFAULT_COLUMNS = [

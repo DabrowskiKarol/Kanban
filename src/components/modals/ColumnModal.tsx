@@ -65,12 +65,12 @@ export function ColumnModal({
         </div>
         <div>
           <label className="label-text">Tone</label>
-          <div className="mt-3 grid grid-cols-4 gap-3">
+          <div className="mt-3 grid grid-cols-4 gap-3 sm:grid-cols-6">
             {COLUMN_TONES.map((tone) => (
               <button
                 key={tone}
                 type="button"
-                className={`h-14 rounded-2xl ${tone} ${selectedTone === tone ? 'ring-2 ring-[#209dd7]' : ''}`}
+                className={`h-14 rounded-2xl shadow-[0_12px_24px_rgba(3,33,71,0.05)] transition hover:-translate-y-0.5 ${tone} ${selectedTone === tone ? 'ring-2 ring-[#209dd7] ring-offset-2 ring-offset-white/60' : ''}`}
                 onClick={() => setValue('tone', tone)}
               />
             ))}
