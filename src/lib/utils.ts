@@ -19,7 +19,7 @@ export function initials(name?: string | null) {
 }
 
 export function formatDateLabel(value?: string | null) {
-  if (!value) return 'No due date'
+  if (!value) return 'Brak terminu'
   return format(new Date(value), 'MMM d')
 }
 
@@ -27,7 +27,7 @@ export function formatTimestamp(
   value?: Timestamp | Date | null,
   pattern = 'MMM d, yyyy',
 ) {
-  if (!value) return 'Just now'
+  if (!value) return 'Przed chwilą'
   const date = value instanceof Timestamp ? value.toDate() : value
   return format(date, pattern)
 }

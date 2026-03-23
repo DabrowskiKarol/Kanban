@@ -39,7 +39,7 @@ export function TaskCard({
         </span>
         <span className="inline-flex items-center gap-1.5">
           <UserCircleIcon className="h-4 w-4" />
-          {task.assigneeName || 'Unassigned'}
+          {task.assigneeName || 'Nieprzypisane'}
         </span>
       </div>
     </button>

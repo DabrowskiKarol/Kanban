@@ -80,7 +80,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           photoURL,
         })
 
-        toast.success('Profile updated')
+        toast.success('Zapisano profil')
       },
     }),
     [loading, profile, user],

@@ -21,7 +21,7 @@ export function AppLayout() {
 
   const handleLogout = async () => {
     await logoutUser()
-    toast.success('Signed out')
+    toast.success('Wylogowano')
     navigate('/login')
   }
 
@@ -39,10 +39,10 @@ export function AppLayout() {
             <div>
               <div className="mb-4 flex items-center justify-between gap-3">
                 <div className="surface-soft p-5">
-                  <p className="label-text">Shared studio</p>
+                  <p className="label-text">Wspólne studio</p>
                   <h1 className="mt-3 text-2xl font-semibold">Editorial Boards</h1>
                   <p className="mt-3 text-sm leading-7 text-copy">
-                    Calm project management for friends, collaborators, and focused work.
+                    Spokojne zarządzanie projektami dla znajomych, współpracowników i skupionej pracy.
                   </p>
                 </div>
                 <button
@@ -62,21 +62,21 @@ export function AppLayout() {
                   className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
                 >
                   <Squares2X2Icon className="h-5 w-5" />
-                  Dashboard
+                  Pulpit
                 </NavLink>
                 <NavLink
                   to="/profile"
                   className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
                 >
                   <UserCircleIcon className="h-5 w-5" />
-                  Profile
+                  Profil
                 </NavLink>
                 <NavLink
                   to="/settings"
                   className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
                 >
                   <Cog6ToothIcon className="h-5 w-5" />
-                  Settings
+                  Ustawienia
                 </NavLink>
               </nav>
             </div>
@@ -99,13 +99,13 @@ export function AppLayout() {
                     onClick={() => navigate('/profile')}
                   >
                     <UserCircleIcon className="h-5 w-5" />
-                    My profile
+                    Mój profil
                   </button>
                 </MenuItem>
                 <MenuItem>
                   <button className="nav-link w-full" onClick={handleLogout}>
                     <ArrowRightStartOnRectangleIcon className="h-5 w-5" />
-                    Log out
+                    Wyloguj się
                   </button>
                 </MenuItem>
               </MenuItems>

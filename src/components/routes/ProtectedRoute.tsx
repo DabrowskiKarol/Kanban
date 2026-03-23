@@ -10,8 +10,8 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
       <div className="editorial-page">
         <div className="page-inner flex min-h-screen items-center justify-center">
           <div className="surface-glass px-8 py-10 text-center">
-            <p className="label-text">Preparing workspace</p>
-            <h1 className="mt-4 text-3xl font-semibold">Loading your boards...</h1>
+            <p className="label-text">Przygotowywanie przestrzeni</p>
+            <h1 className="mt-4 text-3xl font-semibold">Ładowanie Twoich tablic...</h1>
           </div>
         </div>
       </div>

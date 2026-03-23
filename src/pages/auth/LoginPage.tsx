@@ -10,7 +10,7 @@ import { loginWithEmail } from '../../firebase/auth'
 import { useAuth } from '../../hooks/useAuth'
 
 const schema = z.object({
-  displayName: z.string().min(2, 'Enter your name to continue.'),
+  displayName: z.string().min(2, 'Wpisz imię i nazwisko, aby kontynuować.'),
 })
 
 type FormValues = z.infer<typeof schema>
@@ -34,45 +34,45 @@ export function LoginPage() {
   const submit = handleSubmit(async (values) => {
     try {
       await loginWithEmail(values.displayName, '')
-      toast.success('Welcome in')
+      toast.success('Witamy')
       navigate(from)
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : 'Could not log in')
+      toast.error(error instanceof Error ? error.message : 'Nie udało się zalogować')
     }
   })
 
   return (
     <div className="surface-glass p-6 sm:p-8">
-      <p className="label-text">Quick access</p>
-      <h2 className="mt-3 text-3xl font-semibold">Log in with your name</h2>
+      <p className="label-text">Szybki dostęp</p>
+      <h2 className="mt-3 text-3xl font-semibold">Zaloguj się swoim imieniem i nazwiskiem</h2>
       <p className="mt-4 text-sm leading-7 text-copy">
-        This build uses a lightweight local profile flow with no password required.
+        Ta wersja używa lekkiego lokalnego profilu bez potrzeby wpisywania hasła.
       </p>
       <div className="mt-6 flex items-center gap-4 rounded-[24px] bg-white/50 p-4">
         <Avatar name={watch('displayName') || 'Guest User'} className="h-16 w-16" />
         <div>
-          <p className="label-text">Optional photo</p>
+          <p className="label-text">Opcjonalne zdjęcie</p>
           <p className="mt-2 text-sm text-copy">
-            Photo is set during registration or profile editing.
+            Zdjęcie ustawisz podczas rejestracji albo później w profilu.
           </p>
         </div>
       </div>
       <form className="mt-8 space-y-5" onSubmit={submit}>
         <div>
-          <label className="label-text">Your name</label>
-          <Input {...register('displayName')} placeholder="Avery Morgan" />
+          <label className="label-text">Imię i nazwisko</label>
+          <Input {...register('displayName')} placeholder="Jan Kowalski" />
           {errors.displayName ? (
             <p className="mt-2 text-xs text-rose-500">{errors.displayName.message}</p>
           ) : null}
         </div>
         <Button type="submit" disabled={isSubmitting} className="w-full">
-          {isSubmitting ? 'Logging in...' : 'Enter workspace'}
+          {isSubmitting ? 'Logowanie...' : 'Wejdź do aplikacji'}
         </Button>
       </form>
       <p className="mt-6 text-sm text-copy">
-        Need a fresh local profile?{' '}
+        Chcesz utworzyć nowy lokalny profil?{' '}
         <Link to="/register" className="font-semibold text-[#753991]">
-          Create one
+          Utwórz go
         </Link>
       </p>
     </div>

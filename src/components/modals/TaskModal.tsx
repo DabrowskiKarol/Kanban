@@ -10,9 +10,9 @@ import { Input, Textarea } from '../ui/Input'
 import { Modal } from '../ui/Modal'
 
 const schema = z.object({
-  title: z.string().min(2, 'Task title is too short.'),
+  title: z.string().min(2, 'Tytuł zadania jest za krótki.'),
   description: z.string(),
-  columnId: z.string().min(1, 'Choose a column.'),
+  columnId: z.string().min(1, 'Wybierz kolumnę.'),
   priority: z.enum(['low', 'medium', 'high']),
   dueDate: z.string().optional(),
   assigneeId: z.string().optional(),
@@ -71,20 +71,20 @@ export function TaskModal({
   })
 
   return (
-    <Modal open={open} onClose={onClose} title={initialTask ? 'Edit task' : 'Create task'}>
+    <Modal open={open} onClose={onClose} title={initialTask ? 'Edytuj zadanie' : 'Utwórz zadanie'}>
       <form className="space-y-5" onSubmit={submit}>
         <div>
-          <label className="label-text">Title</label>
-          <Input {...register('title')} placeholder="Write launch recap" />
+          <label className="label-text">Tytuł</label>
+          <Input {...register('title')} placeholder="Przygotuj copy na stronę główną" />
           {errors.title ? <p className="mt-2 text-xs text-rose-500">{errors.title.message}</p> : null}
         </div>
         <div>
-          <label className="label-text">Description</label>
-          <Textarea {...register('description')} placeholder="Context, notes, and expected outcome." />
+          <label className="label-text">Opis</label>
+          <Textarea {...register('description')} placeholder="Kontekst, notatki i oczekiwany rezultat." />
         </div>
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
-            <label className="label-text">Column</label>
+            <label className="label-text">Kolumna</label>
             <select className="ghost-input" {...register('columnId')}>
               {columns.map((column) => (
                 <option key={column.id} value={column.id}>
@@ -94,7 +94,7 @@ export function TaskModal({
             </select>
           </div>
           <div>
-            <label className="label-text">Priority</label>
+            <label className="label-text">Priorytet</label>
             <select className="ghost-input" {...register('priority')}>
               {PRIORITIES.map((priority) => (
                 <option key={priority.value} value={priority.value}>
@@ -106,13 +106,13 @@ export function TaskModal({
         </div>
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
-            <label className="label-text">Due date</label>
+            <label className="label-text">Termin</label>
             <Input type="date" {...register('dueDate')} />
           </div>
           <div>
-            <label className="label-text">Assignee</label>
+            <label className="label-text">Osoba odpowiedzialna</label>
             <select className="ghost-input" {...register('assigneeId')}>
-              <option value="">Unassigned</option>
+              <option value="">Nieprzypisane</option>
               {members.map((member) => (
                 <option key={member.id} value={member.id}>
                   {member.displayName}
@@ -132,16 +132,16 @@ export function TaskModal({
                   onClose()
                 }}
               >
-                Delete task
+                Usuń zadanie
               </Button>
             ) : null}
           </div>
           <div className="flex gap-3">
             <Button variant="ghost" onClick={onClose}>
-              Cancel
+              Anuluj
             </Button>
             <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Saving...' : initialTask ? 'Save changes' : 'Create task'}
+              {isSubmitting ? 'Zapisywanie...' : initialTask ? 'Zapisz zmiany' : 'Utwórz zadanie'}
             </Button>
           </div>
         </div>

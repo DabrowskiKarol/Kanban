@@ -9,7 +9,7 @@ import { Input } from '../ui/Input'
 import { Modal } from '../ui/Modal'
 
 const schema = z.object({
-  title: z.string().min(2, 'Column title is too short.'),
+  title: z.string().min(2, 'Nazwa kolumny jest za krótka.'),
   tone: z.string(),
 })
 
@@ -56,15 +56,15 @@ export function ColumnModal({
   })
 
   return (
-    <Modal open={open} onClose={onClose} title={initialColumn ? 'Edit column' : 'Create column'}>
+    <Modal open={open} onClose={onClose} title={initialColumn ? 'Edytuj kolumnę' : 'Utwórz kolumnę'}>
       <form className="space-y-5" onSubmit={submit}>
         <div>
-          <label className="label-text">Title</label>
-          <Input {...register('title')} placeholder="Ideas" />
+          <label className="label-text">Nazwa</label>
+          <Input {...register('title')} placeholder="Pomysły" />
           {errors.title ? <p className="mt-2 text-xs text-rose-500">{errors.title.message}</p> : null}
         </div>
         <div>
-          <label className="label-text">Tone</label>
+          <label className="label-text">Kolor</label>
           <div className="mt-3 grid grid-cols-4 gap-3 sm:grid-cols-6">
             {COLUMN_TONES.map((tone) => (
               <button
@@ -78,10 +78,10 @@ export function ColumnModal({
         </div>
         <div className="flex justify-end gap-3">
           <Button variant="ghost" onClick={onClose}>
-            Cancel
+            Anuluj
           </Button>
           <Button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Saving...' : initialColumn ? 'Save changes' : 'Create column'}
+            {isSubmitting ? 'Zapisywanie...' : initialColumn ? 'Zapisz zmiany' : 'Utwórz kolumnę'}
           </Button>
         </div>
       </form>

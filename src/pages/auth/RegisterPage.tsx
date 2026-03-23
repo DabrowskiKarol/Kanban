@@ -11,8 +11,8 @@ import { registerWithEmail } from '../../firebase/auth'
 import { useAuth } from '../../hooks/useAuth'
 
 const schema = z.object({
-  firstName: z.string().min(2, 'Enter your first name.'),
-  lastName: z.string().min(2, 'Enter your last name.'),
+  firstName: z.string().min(2, 'Wpisz imię.'),
+  lastName: z.string().min(2, 'Wpisz nazwisko.'),
 })
 
 type FormValues = z.infer<typeof schema>
@@ -38,22 +38,22 @@ export function RegisterPage() {
   const submit = handleSubmit(async (values) => {
     try {
       await registerWithEmail({ ...values, photo })
-      toast.success('Profile created')
+      toast.success('Utworzono profil')
       navigate('/app')
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : 'Could not create profile')
+      toast.error(error instanceof Error ? error.message : 'Nie udało się utworzyć profilu')
     }
   })
 
   return (
     <div className="surface-glass p-6 sm:p-8">
-      <p className="label-text">Join the studio</p>
-      <h2 className="mt-3 text-3xl font-semibold">Create a local profile</h2>
+      <p className="label-text">Dołącz do studia</p>
+      <h2 className="mt-3 text-3xl font-semibold">Utwórz lokalny profil</h2>
       <form className="mt-8 space-y-5" onSubmit={submit}>
         <div className="flex items-center gap-4 rounded-[24px] bg-white/50 p-4">
           <Avatar src={previewUrl} name={fullName || 'New user'} className="h-16 w-16" />
           <div className="min-w-0 flex-1">
-            <label className="label-text">Profile photo</label>
+            <label className="label-text">Zdjęcie profilowe</label>
             <Input
               type="file"
               accept="image/*"
@@ -64,28 +64,28 @@ export function RegisterPage() {
         </div>
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
-            <label className="label-text">First name</label>
-            <Input {...register('firstName')} placeholder="Avery" />
+            <label className="label-text">Imię</label>
+            <Input {...register('firstName')} placeholder="Jan" />
             {errors.firstName ? (
               <p className="mt-2 text-xs text-rose-500">{errors.firstName.message}</p>
             ) : null}
           </div>
           <div>
-            <label className="label-text">Last name</label>
-            <Input {...register('lastName')} placeholder="Morgan" />
+            <label className="label-text">Nazwisko</label>
+            <Input {...register('lastName')} placeholder="Kowalski" />
             {errors.lastName ? (
               <p className="mt-2 text-xs text-rose-500">{errors.lastName.message}</p>
             ) : null}
           </div>
         </div>
         <Button type="submit" disabled={isSubmitting} className="w-full">
-          {isSubmitting ? 'Creating profile...' : 'Create profile'}
+          {isSubmitting ? 'Tworzenie profilu...' : 'Utwórz profil'}
         </Button>
       </form>
       <p className="mt-6 text-sm text-copy">
-        Already have a local profile?{' '}
+        Masz już lokalny profil?{' '}
         <Link to="/login" className="font-semibold text-[#753991]">
-          Log in
+          Zaloguj się
         </Link>
       </p>
     </div>

@@ -8,8 +8,8 @@ import { Input } from '../../components/ui/Input'
 import { useAuth } from '../../hooks/useAuth'
 
 const profileSchema = z.object({
-  firstName: z.string().min(2, 'Enter your first name.'),
-  lastName: z.string().min(2, 'Enter your last name.'),
+  firstName: z.string().min(2, 'Wpisz imię.'),
+  lastName: z.string().min(2, 'Wpisz nazwisko.'),
 })
 
 type ProfileValues = z.infer<typeof profileSchema>
@@ -32,8 +32,8 @@ export function ProfilePage() {
   return (
     <div className="grid gap-6 xl:grid-cols-[1fr_0.88fr]">
       <section className="surface-panel p-6 sm:p-8">
-        <p className="label-text">Profile</p>
-        <h1 className="mt-3 text-4xl font-semibold">Personal workspace identity</h1>
+        <p className="label-text">Profil</p>
+        <h1 className="mt-3 text-4xl font-semibold">Tożsamość Twojej przestrzeni pracy</h1>
         <form
           className="mt-8 space-y-5"
           onSubmit={profileForm.handleSubmit(async (values) => {
@@ -44,7 +44,7 @@ export function ProfilePage() {
           <div className="surface-soft flex items-center gap-4 p-5">
             <Avatar src={previewUrl} name={profile?.displayName} className="h-20 w-20" />
             <div className="min-w-0 flex-1">
-              <label className="label-text">Profile photo</label>
+              <label className="label-text">Zdjęcie profilowe</label>
               <Input
                 type="file"
                 accept="image/*"
@@ -55,30 +55,30 @@ export function ProfilePage() {
           </div>
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
-              <label className="label-text">First name</label>
+              <label className="label-text">Imię</label>
               <Input {...profileForm.register('firstName')} />
             </div>
             <div>
-              <label className="label-text">Last name</label>
+              <label className="label-text">Nazwisko</label>
               <Input {...profileForm.register('lastName')} />
             </div>
           </div>
           <div>
-            <label className="label-text">Local profile id</label>
+            <label className="label-text">Lokalny identyfikator profilu</label>
             <Input value={user?.uid || ''} disabled />
           </div>
           <Button type="submit" disabled={profileForm.formState.isSubmitting}>
-            {profileForm.formState.isSubmitting ? 'Saving...' : 'Save profile'}
+            {profileForm.formState.isSubmitting ? 'Zapisywanie...' : 'Zapisz profil'}
           </Button>
         </form>
       </section>
 
       <section className="surface-panel p-6 sm:p-8">
-        <p className="label-text">Access</p>
-        <h2 className="mt-3 text-3xl font-semibold">Password-free local mode</h2>
+        <p className="label-text">Dostęp</p>
+        <h2 className="mt-3 text-3xl font-semibold">Lokalny tryb bez hasła</h2>
         <p className="mt-4 text-sm leading-7 text-copy">
-          This build keeps your session in browser storage. To switch people quickly, just
-          log out and enter another name on the login screen.
+          Ta wersja przechowuje sesję w pamięci przeglądarki. Aby szybko zmienić osobę,
+          wystarczy się wylogować i wpisać inne imię oraz nazwisko na ekranie logowania.
         </p>
       </section>
     </div>

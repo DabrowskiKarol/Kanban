@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom'
 export function ForgotPasswordPage() {
   return (
     <div className="surface-glass p-6 sm:p-8">
-      <p className="label-text">No password needed</p>
-      <h2 className="mt-3 text-3xl font-semibold">This build uses a local profile flow</h2>
+      <p className="label-text">Hasło nie jest potrzebne</p>
+      <h2 className="mt-3 text-3xl font-semibold">Ta wersja używa lokalnego profilu</h2>
       <p className="mt-4 text-sm leading-7 text-copy">
-        Just go back and enter your name to continue, or create a fresh profile with a
-        photo in the registration view.
+        Po prostu wróć i wpisz swoje imię oraz nazwisko, aby kontynuować,
+        albo utwórz nowy profil ze zdjęciem na ekranie rejestracji.
       </p>
       <p className="mt-6 text-sm text-copy">
         <Link to="/login" className="font-semibold text-[#753991]">
-          Back to log in
+          Wróć do logowania
         </Link>
       </p>
     </div>

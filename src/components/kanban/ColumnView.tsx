@@ -51,7 +51,7 @@ export function ColumnView({
     >
       <div className="mb-4 flex items-start justify-between gap-3">
         <div {...attributes} {...listeners} className="cursor-grab active:cursor-grabbing">
-          <p className="label-text">Column {String(column.order + 1).padStart(2, '0')}</p>
+          <p className="label-text">Kolumna {String(column.order + 1).padStart(2, '0')}</p>
           <h3 className="mt-2 text-xl font-semibold">{column.title}</h3>
         </div>
         <div className="flex items-center gap-1">
@@ -72,7 +72,7 @@ export function ColumnView({
 
       <div className={cn('rounded-[22px] p-3', column.tone)}>
         <div className="mb-4 flex items-center justify-between">
-          <span className="text-sm font-medium text-copy">{tasks.length} tasks</span>
+          <span className="text-sm font-medium text-copy">{tasks.length} zadań</span>
           <EllipsisHorizontalIcon className="h-5 w-5 text-copy" />
         </div>
 
@@ -90,7 +90,7 @@ export function ColumnView({
           onClick={() => onAddTask(column.id)}
         >
           <PlusIcon className="h-4 w-4" />
-          New task
+          Nowe zadanie
         </Button>
       </div>
     </section>

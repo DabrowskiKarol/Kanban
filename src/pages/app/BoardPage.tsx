@@ -80,7 +80,7 @@ export function BoardPage() {
   if (loading) {
     return (
       <div className="surface-panel p-10">
-        <h1 className="text-3xl font-semibold">Loading board...</h1>
+        <h1 className="text-3xl font-semibold">Ładowanie tablicy...</h1>
       </div>
     )
   }
@@ -88,8 +88,8 @@ export function BoardPage() {
   if (!board || !canAccess) {
     return (
       <div className="surface-panel p-10">
-        <p className="label-text">Unavailable</p>
-        <h1 className="mt-3 text-3xl font-semibold">This board is not available to you.</h1>
+        <p className="label-text">Niedostępne</p>
+        <h1 className="mt-3 text-3xl font-semibold">Ta tablica nie jest dla Ciebie dostępna.</h1>
       </div>
     )
   }
@@ -146,7 +146,7 @@ export function BoardPage() {
     try {
       await reorderTasks(board.id, updates)
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : 'Could not move task')
+      toast.error(error instanceof Error ? error.message : 'Nie udało się przenieść zadania')
     }
   }
 
@@ -157,7 +157,7 @@ export function BoardPage() {
       <section className="surface-panel overflow-hidden p-6 sm:p-8">
         <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
           <div>
-            <p className="label-text">Board workspace</p>
+            <p className="label-text">Przestrzeń tablicy</p>
             <h1 className="mt-4 text-4xl font-semibold sm:text-5xl">{board.name}</h1>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -169,14 +169,14 @@ export function BoardPage() {
               }}
             >
               {sidebarHidden ? <EyeIcon className="h-4 w-4" /> : <EyeSlashIcon className="h-4 w-4" />}
-              {sidebarHidden ? 'Show sidebar' : 'Hide sidebar'}
+              {sidebarHidden ? 'Pokaż panel boczny' : 'Ukryj panel boczny'}
             </Button>
             <Button
               variant="secondary"
               onClick={() => setHeaderHidden((current) => !current)}
             >
               {headerHidden ? <RectangleStackIcon className="h-4 w-4" /> : <EyeSlashIcon className="h-4 w-4" />}
-              {headerHidden ? 'Show overview' : 'Hide overview'}
+              {headerHidden ? 'Pokaż przegląd' : 'Ukryj przegląd'}
             </Button>
             <Button
               variant="secondary"
@@ -187,7 +187,7 @@ export function BoardPage() {
               }}
             >
               {focusMode ? <ArrowsPointingInIcon className="h-4 w-4" /> : <ArrowsPointingOutIcon className="h-4 w-4" />}
-              {focusMode ? 'Exit focus mode' : 'Expand board'}
+              {focusMode ? 'Wyjdź z trybu skupienia' : 'Powiększ tablicę'}
             </Button>
           </div>
         </div>
@@ -196,7 +196,7 @@ export function BoardPage() {
           <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
             <div>
               <p className="mt-1 max-w-3xl text-sm leading-8 text-copy sm:text-base">
-                {board.description || 'A shared editorial board for organized, elegant progress.'}
+                {board.description || 'Wspólna redakcyjna tablica do uporządkowanej i eleganckiej pracy.'}
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button
@@ -207,11 +207,11 @@ export function BoardPage() {
                   }}
                 >
                   <PlusIcon className="h-4 w-4" />
-                  New task
+                  Nowe zadanie
                 </Button>
                 <Button variant="secondary" onClick={() => setInviteOpen(true)}>
                   <UserPlusIcon className="h-4 w-4" />
-                  Invite member
+                  Zaproś osobę
                 </Button>
                 <Button
                   variant="secondary"
@@ -220,7 +220,7 @@ export function BoardPage() {
                     setColumnModalOpen(true)
                   }}
                 >
-                  Add column
+                  Dodaj kolumnę
                 </Button>
               </div>
             </div>
@@ -228,11 +228,11 @@ export function BoardPage() {
             <div className="surface-soft p-5 sm:p-6">
               <div className="flex items-center justify-between gap-3">
                 <div>
-                  <p className="label-text">Overview</p>
-                  <h2 className="mt-3 text-2xl font-semibold">Team rhythm</h2>
+                  <p className="label-text">Przegląd</p>
+                  <h2 className="mt-3 text-2xl font-semibold">Rytm zespołu</h2>
                 </div>
                 <span className="rounded-full bg-white/70 px-3 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-copy">
-                  {tasks.length} tasks
+                  {tasks.length} zadań
                 </span>
               </div>
               <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -247,7 +247,7 @@ export function BoardPage() {
               </div>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-[22px] bg-white/60 p-4">
-                  <p className="label-text">Due soon</p>
+                  <p className="label-text">Wkrótce termin</p>
                   <p className="mt-2 text-2xl font-semibold">
                     {
                       tasks.filter(
@@ -259,14 +259,14 @@ export function BoardPage() {
                   </p>
                 </div>
                 <div className="rounded-[22px] bg-white/60 p-4">
-                  <p className="label-text">Pending invites</p>
+                  <p className="label-text">Oczekujące zaproszenia</p>
                   <p className="mt-2 text-2xl font-semibold">{board.pendingInviteEmails.length}</p>
                 </div>
               </div>
               <div className="mt-6 rounded-[22px] bg-white/60 p-4 text-sm text-copy">
                 <div className="flex items-center gap-2">
                   <CalendarDaysIcon className="h-4 w-4" />
-                  Live board data syncs through Firestore in real time.
+                  Dane tablicy odświeżają się na żywo w tej sesji.
                 </div>
               </div>
             </div>
@@ -281,11 +281,11 @@ export function BoardPage() {
               }}
             >
               <PlusIcon className="h-4 w-4" />
-              New task
+              Nowe zadanie
             </Button>
             <Button variant="secondary" onClick={() => setInviteOpen(true)}>
               <UserPlusIcon className="h-4 w-4" />
-              Invite member
+              Zaproś osobę
             </Button>
             <Button
               variant="secondary"
@@ -294,7 +294,7 @@ export function BoardPage() {
                 setColumnModalOpen(true)
               }}
             >
-              Add column
+              Dodaj kolumnę
             </Button>
           </div>
         )}
@@ -333,11 +333,11 @@ export function BoardPage() {
                   }}
                   onDeleteColumn={async (columnToDelete) => {
                     if ((tasksByColumn[columnToDelete.id] || []).length) {
-                      toast.error('Move tasks out of this column before deleting it')
+                      toast.error('Przenieś zadania z tej kolumny przed jej usunięciem')
                       return
                     }
                     await deleteColumn(board.id, columnToDelete.id)
-                    toast.success('Column deleted')
+                    toast.success('Usunięto kolumnę')
                   }}
                 />
               ))}
@@ -355,9 +355,9 @@ export function BoardPage() {
         onInvite={async (email) => {
           try {
             await inviteBoardMember(board.id, email)
-            toast.success('Invitation saved')
+            toast.success('Zapisano zaproszenie')
           } catch (error) {
-            toast.error(error instanceof Error ? error.message : 'Could not invite member')
+            toast.error(error instanceof Error ? error.message : 'Nie udało się zaprosić osoby')
           }
         }}
       />
@@ -373,13 +373,13 @@ export function BoardPage() {
           try {
             if (editingColumn) {
               await updateColumn(board.id, editingColumn.id, values)
-              toast.success('Column updated')
+              toast.success('Zaktualizowano kolumnę')
             } else {
               await createColumn(board.id, values.title, values.tone, columns.length)
-              toast.success('Column created')
+              toast.success('Utworzono kolumnę')
             }
           } catch (error) {
-            toast.error(error instanceof Error ? error.message : 'Could not save column')
+            toast.error(error instanceof Error ? error.message : 'Nie udało się zapisać kolumny')
           }
         }}
       />
@@ -407,7 +407,7 @@ export function BoardPage() {
                 assigneeId: values.assigneeId || null,
                 assigneeName: assignee?.displayName || null,
               })
-              toast.success('Task updated')
+              toast.success('Zaktualizowano zadanie')
               return
             }
 
@@ -420,22 +420,22 @@ export function BoardPage() {
               assigneeId: values.assigneeId || null,
               assigneeName: assignee?.displayName || null,
               createdBy: user!.uid,
-              createdByName: profile?.displayName || user?.displayName || 'Unknown',
+              createdByName: profile?.displayName || user?.displayName || 'Nieznany',
               order: tasks.filter(
                 (task) =>
                   task.columnId === (values.columnId || taskColumnId || columns[0]?.id),
               ).length,
             })
-            toast.success('Task created')
+            toast.success('Utworzono zadanie')
           } catch (error) {
-            toast.error(error instanceof Error ? error.message : 'Could not save task')
+            toast.error(error instanceof Error ? error.message : 'Nie udało się zapisać zadania')
           }
         }}
         onDelete={
           activeTask
             ? async () => {
                 await deleteTask(board.id, activeTask.id)
-                toast.success('Task deleted')
+                toast.success('Usunięto zadanie')
               }
             : undefined
         }
